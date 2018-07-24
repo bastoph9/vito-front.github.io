@@ -75,7 +75,7 @@
        * Make Special Characters Table
        *
        * @member plugin.specialChar
-       * @private
+       * @public
        * @return {jQuery}
        */
       this.makeSpecialCharSetTable = function () {

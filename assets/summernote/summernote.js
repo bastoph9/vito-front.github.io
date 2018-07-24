@@ -3269,7 +3269,7 @@
      * will result in an object of property-value pairs.
      * (compability with version < 1.9)
      *
-     * @private
+     * @public
      * @param  {jQuery} $obj
      * @param  {Array} propertyNames - An array of one or more CSS properties.
      * @return {Object}

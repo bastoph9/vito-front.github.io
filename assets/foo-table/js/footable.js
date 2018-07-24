@@ -922,7 +922,7 @@
 		/**
 		 * This in effect lets us use the "apply" method on a function using the "new" keyword.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {function} klass
 		 * @param args
 		 * @returns {FooTable.Class}
@@ -1037,7 +1037,7 @@
 		 * This is supplied either the value or the cell element/jQuery object if it exists.
 		 * If supplied the element we need set the $el property and parse the value from it.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or element to define the cell.
 		 * @this FooTable.Cell
 		 */
@@ -1074,14 +1074,14 @@
 			/**
 			 * An array of CSS classes for the cell.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Array.<string>}
 			 */
 			this.classes = F.is.jq(this.$el) && this.$el.attr('class') ? this.$el.attr('class').match(/\S+/g) : (F.is.array(this.o.classes) ? this.o.classes : (F.is.string(this.o.classes) ? this.o.classes.match(/\S+/g) : []));
 			/**
 			 * The inline styles for the cell.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {object}
 			 */
 			this.style = F.is.jq(this.$el) && this.$el.attr('style') ? F.css2json(this.$el.attr('style')) : (F.is.hash(this.o.style) ? this.o.style : (F.is.string(this.o.style) ? F.css2json(this.o.style) : {}));
@@ -1089,7 +1089,7 @@
 		/**
 		 * After the cell has been defined this ensures that the $el and #detail properties are jQuery objects by either creating or updating them.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Cell
 		 */
 		$create: function(){
@@ -1112,7 +1112,7 @@
 		/**
 		 * Collapses this cell and displays it in the details row.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		collapse: function(){
 			if (!this.created) return;
@@ -1130,7 +1130,7 @@
 		/**
 		 * Restores this cell from a detail row back into the normal row.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		restore: function(){
 			if (!this.created) return;
@@ -1147,7 +1147,7 @@
 		/**
 		 * Helper method to call this cell's column parser function supplying the required parameters.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {*}
 		 * @see FooTable.Column#parser
 		 * @this FooTable.Cell
@@ -1158,7 +1158,7 @@
 		/**
 		 * Helper method to call this cell's column formatter function using the supplied value and any additional required parameters.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {*} value - The value to format.
 		 * @returns {(string|HTMLElement|jQuery)}
 		 * @see FooTable.Column#formatter
@@ -1309,7 +1309,7 @@
 		/**
 		 * This is supplied the column definition in the form of a simple object created by merging options supplied via the plugin constructor with those parsed from the DOM.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} definition - The object containing the column definition.
 		 * @this FooTable.Column
 		 */
@@ -1360,7 +1360,7 @@
 		/**
 		 * After the column has been defined this ensures that the $el property is a jQuery object by either creating or updating the current value.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Column
 		 */
 		$create: function(){
@@ -1370,7 +1370,7 @@
 		 * This is supplied either the cell value or jQuery object to parse. Any value can be returned from this method and will be provided to the {@link FooTable.Column#format} function
 		 * to generate the cell contents.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {string}
 		 * @this FooTable.Column
@@ -1387,7 +1387,7 @@
 		 * This is supplied the value retrieved from the {@link FooTable.Column#parse} function and must return a string, HTMLElement or jQuery object.
 		 * The return value from this function is what is displayed in the cell in the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {string} value - The value to format.
 		 * @param {object} options - The current plugin options.
 		 * @param {object} rowData - An object containing the current row data.
@@ -1400,7 +1400,7 @@
 		/**
 		 * Creates a cell for this column from the supplied {@link FooTable.Row} object. This allows different column types to return different types of cells.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {FooTable.Row} row - The row to create the cell from.
 		 * @returns {FooTable.Cell}
 		 * @this FooTable.Column
@@ -1448,42 +1448,42 @@
 		 * The preinit method is called during the parent {@link FooTable.Table} constructor call.
 		 * @param {object} data - The jQuery.data() object of the root table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		preinit: function(data){},
 		/**
 		 * The init method is called during the parent {@link FooTable.Table} constructor call.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		init: function(){},
 		/**
 		 * This method is called from the {@link FooTable.Table#destroy} method.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		destroy: function(){},
 		/**
 		 * This method is called from the {@link FooTable.Table#draw} method.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		predraw: function(){},
 		/**
 		 * This method is called from the {@link FooTable.Table#draw} method.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		draw: function(){},
 		/**
 		 * This method is called from the {@link FooTable.Table#draw} method.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @function
 		 */
 		postdraw: function(){}
@@ -1570,14 +1570,14 @@
 			/**
 			 * The jQuery table row object this instance wraps.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {jQuery}
 			 */
 			this.$el = F.is.element(dataOrElement) || F.is.jq(dataOrElement) ? $(dataOrElement) : null;
 			/**
 			 * The jQuery toggle element for the row.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {jQuery}
 			 */
 			this.$toggle = $('<span/>', {'class': 'footable-toggle fooicon fooicon-plus'});
@@ -1588,7 +1588,7 @@
 			/**
 			 * The value of the row.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Object}
 			 */
 			this.value = isObj ? (hasOptions ? dataOrElement.value : dataOrElement) : null;
@@ -1606,21 +1606,21 @@
 			/**
 			 * Whether or not this row is expanded and will display it's detail row when there are any hidden columns.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {boolean}
 			 */
 			this.expanded = F.is.jq(this.$el) ? (this.$el.data('expanded') || this.o.expanded) : this.o.expanded;
 			/**
 			 * An array of CSS classes for the row.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Array.<string>}
 			 */
 			this.classes = F.is.jq(this.$el) && this.$el.attr('class') ? this.$el.attr('class').match(/\S+/g) : (F.is.array(this.o.classes) ? this.o.classes : (F.is.string(this.o.classes) ? this.o.classes.match(/\S+/g) : []));
 			/**
 			 * The inline styles for the row.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {object}
 			 */
 			this.style = F.is.jq(this.$el) && this.$el.attr('style') ? F.css2json(this.$el.attr('style')) : (F.is.hash(this.o.style) ? this.o.style : (F.is.string(this.o.style) ? F.css2json(this.o.style) : {}));
@@ -1642,7 +1642,7 @@
 		/**
 		 * After the row has been defined this ensures that the $el property is a jQuery object by either creating or updating the current value.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Row
 		 */
 		$create: function(){
@@ -1671,7 +1671,7 @@
 		/**
 		 * This is called during the construct method and uses the current column definitions to create an array of {@link FooTable.Cell} objects for the row.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {Array.<FooTable.Cell>}
 		 * @this FooTable.Row
 		 */
@@ -1889,7 +1889,7 @@
 		 * Handles the toggle click event for rows.
 		 * @instance
 		 * @param {jQuery.Event} e - The jQuery.Event object for the click event.
-		 * @private
+		 * @public
 		 * @this jQuery
 		 */
 		_onToggle: function (e) {
@@ -1907,7 +1907,7 @@
 
 	/**
 	 * An array of all currently loaded instances of the plugin.
-	 * @protected
+	 * @public
 	 * @readonly
 	 * @type {Array.<FooTable.Table>}
 	 */
@@ -1929,7 +1929,7 @@
 			/**
 			 * The timeout ID for the resize event.
 			 * @instance
-			 * @private
+			 * @public
 			 * @type {?number}
 			 */
 			this._resizeTimeout = null;
@@ -1972,14 +1972,14 @@
 			/**
 			 * An array of all CSS classes on the table that do not start with "footable".
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Array.<string>}
 			 */
 			this.classes = [];
 			/**
 			 * All components for this instance of the plugin. These are executed in the order they appear in the array for the initialize phase and in reverse order for the destroy phase of the plugin.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {object}
 			 * @prop {Array.<FooTable.Component>} internal - The internal components for the plugin. These are executed either before all other components in the initialize phase or after them in the destroy phase of the plugin.
 			 * @prop {Array.<FooTable.Component>} core - The core components for the plugin. These are executed either after the internal components in the initialize phase or before them in the destroy phase of the plugin.
@@ -2014,7 +2014,7 @@
 		 * @this FooTable.Table
 		 * @instance
 		 * @param {function} [ready] - A callback function to execute once the plugin is initialized.
-		 * @private
+		 * @public
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Table#"ready.ft.table"
 		 */
@@ -2043,7 +2043,7 @@
 		/**
 		 * The preinit method is called prior to the plugins actual initialization and provides itself and it's components an opportunity to parse any additional option values.
 		 * @instance
-		 * @private
+		 * @public
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Table#"preinit.ft.table"
 		 */
@@ -2077,7 +2077,7 @@
 		 * Initializes this instance of the plugin and calls the callback function if one is supplied once complete.
 		 * @this FooTable.Table
 		 * @instance
-		 * @private
+		 * @public
 		 * @return {jQuery.Promise}
 		 * @fires FooTable.Table#"init.ft.table"
 		 */
@@ -2194,7 +2194,7 @@
 		 * Performs the drawing of the table.
 		 * @this FooTable.Table
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Table#"predraw.ft.table"
 		 * @fires FooTable.Table#"draw.ft.table"
@@ -2252,7 +2252,7 @@
 		 * Executes the specified method with the optional number of parameters on all components and waits for the promise from each to be resolved before executing the next.
 		 * @this FooTable.Table
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {boolean} reverse - Whether or not to execute the component methods in the reverse order to what they were registered in.
 		 * @param {boolean} enabled - Whether or not to execute the method on enabled components only.
 		 * @param {string} methodName - The name of the method to execute.
@@ -2272,7 +2272,7 @@
 		 * Executes the specified method with the optional number of parameters on all supplied components waiting for the result of each before executing the next.
 		 * @this FooTable.Table
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {Array.<FooTable.Component>} components - The components to call the method on.
 		 * @param {string} methodName - The name of the method to execute
 		 * @param {*} [param1] - The first parameter for the method.
@@ -2309,7 +2309,7 @@
 		 * Listens to the window resize event and performs a check to see if the breakpoint has changed.
 		 * @this window
 		 * @instance
-		 * @private
+		 * @public
 		 * @fires FooTable.Table#"resize.ft.table"
 		 */
 		_onWindowResize: function (e) {
@@ -2348,7 +2348,7 @@
 		 * @summary Parses the supplied value or element to retrieve a column value.
 		 * @description This is supplied either the cell value or jQuery object to parse. This method will return either the Array containing the values or null.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(array|null)}
 		 */
@@ -2372,7 +2372,7 @@
 		 * @description This is supplied the value retrieved from the {@link FooTable.ArrayColumn#parser} function and must return a string, HTMLElement or jQuery object.
 		 * The return value from this function is what is displayed in the cell in the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {?Array} value - The value to format.
 		 * @param {object} options - The current plugin options.
 		 * @param {object} rowData - An object containing the current row data.
@@ -2415,7 +2415,7 @@
 		 * This is supplied either the cell value or jQuery object to parse. Any value can be returned from this method and will be provided to the {@link FooTable.DateColumn#format} function
 		 * to generate the cell contents.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(moment|null)}
 		 * @this FooTable.DateColumn
@@ -2445,7 +2445,7 @@
 		 * This is supplied the value retrieved from the {@link FooTable.DateColumn#parser} function and must return a string, HTMLElement or jQuery object.
 		 * The return value from this function is what is displayed in the cell in the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {*} value - The value to format.
 		 * @param {object} options - The current plugin options.
 		 * @param {object} rowData - An object containing the current row data.
@@ -2512,7 +2512,7 @@
 		 * This is supplied either the cell value or jQuery object to parse. Any value can be returned from this method and will be provided to the {@link FooTable.HTMLColumn#format} function
 		 * to generate the cell contents.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(jQuery|null)}
 		 * @this FooTable.HTMLColumn
@@ -2558,7 +2558,7 @@
 		 * This is supplied either the cell value or jQuery object to parse. Any value can be returned from this method and will be provided to the {@link FooTable.Column#formatter} function
 		 * to generate the cell contents.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(number|null)}
 		 * @this FooTable.NumberColumn
@@ -2579,7 +2579,7 @@
 		 * This is supplied the value retrieved from the {@link FooTable.NumberColumn#parse} function and must return a string, HTMLElement or jQuery object.
 		 * The return value from this function is what is displayed in the cell in the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {number} value - The value to format.
 		 * @param {object} options - The current plugin options.
 		 * @param {object} rowData - An object containing the current row data.
@@ -2616,7 +2616,7 @@
 		 * @summary Parses the supplied value or element to retrieve a column value.
 		 * @description This is supplied either the cell value or jQuery object to parse. This method will return either the Object containing the values or null.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(object|null)}
 		 */
@@ -2640,7 +2640,7 @@
 		 * @description This is supplied the value retrieved from the {@link FooTable.ObjectColumn#parser} function and must return a string, HTMLElement or jQuery object.
 		 * The return value from this function is what is displayed in the cell in the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {*} value - The value to format.
 		 * @param {object} options - The current plugin options.
 		 * @param {object} rowData - An object containing the current row data.
@@ -2696,7 +2696,7 @@
 			/* PROTECTED */
 			/**
 			 * This provides a shortcut to the {@link FooTable.Table#options} object.
-			 * @protected
+			 * @public
 			 * @type {FooTable.Table#options}
 			 */
 			this.o = table.o;
@@ -2732,7 +2732,7 @@
 			/**
 			 * This value is set once when the {@link FooTable.Breakpoints#array} is generated and contains a space delimited string of all the breakpoint class names.
 			 * @type {string}
-			 * @private
+			 * @public
 			 */
 			this._classNames = '';
 
@@ -2744,7 +2744,7 @@
 		/**
 		 * Checks the supplied data and options for the breakpoints component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.Breakpoints#"preinit.ft.breakpoints"
 		 */
@@ -2778,7 +2778,7 @@
 		/**
 		 * Initializes the class parsing the options into a sorted array of {@link FooTable.Breakpoint} objects.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Breakpoints#"init.ft.breakpoints"
 		 */
 		init: function(){
@@ -2797,7 +2797,7 @@
 		/**
 		 * Whenever the table is drawn this ensures the correct breakpoint class is applied to the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		draw: function(){
 			this.ft.$el.removeClass(this._classNames).addClass('breakpoint-' + this.current.name);
@@ -2995,7 +2995,7 @@
 			/* PROTECTED */
 			/**
 			 * This provides a shortcut to the {@link FooTable.Table#options} object.
-			 * @protected
+			 * @public
 			 * @type {FooTable.Table#options}
 			 */
 			this.o = table.o;
@@ -3024,7 +3024,7 @@
 		/**
 		 * This parses the columns from either the tables rows or the supplied options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The tables jQuery data object.
 		 * @returns {jQuery.Promise}
 		 * @this FooTable.Columns
@@ -3109,7 +3109,7 @@
 		 * Used to finalize the parsing of columns it is supplied the parse deferred object which must be resolved with an array of {@link FooTable.Column} objects
 		 * or rejected with an error.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {jQuery.Deferred} deferred - The deferred object used for parsing.
 		 * @param {Array.<object>} cols - An array of all merged column definitions.
 		 */
@@ -3132,7 +3132,7 @@
 		/**
 		 * The columns preinit method is used to parse and check the column options supplied from both static content and through the constructor.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the root table element.
 		 * @this FooTable.Columns
 		 */
@@ -3156,7 +3156,7 @@
 		/**
 		 * Initializes the columns creating the table header if required.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Columns#"init.ft.columns"
 		 * @this FooTable.Columns
 		 */
@@ -3176,7 +3176,7 @@
 		/**
 		 * Destroys the columns component removing any UI generated from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Columns#"destroy.ft.columns"
 		 */
 		destroy: function(){
@@ -3195,7 +3195,7 @@
 		/**
 		 * The predraw method called from within the {@link FooTable.Table#draw} method.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Columns
 		 */
 		predraw: function(){
@@ -3221,7 +3221,7 @@
 		/**
 		 * Performs the actual drawing of the columns, hiding or displaying them depending on there breakpoints.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Columns
 		 */
 		draw: function(){
@@ -3235,7 +3235,7 @@
 		/**
 		 * Creates the header row for the table from the parsed column definitions.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Columns
 		 */
 		$create: function(){
@@ -3331,14 +3331,14 @@
 			/**
 			 * This provides a shortcut to the {@link FooTable.Table#options} object.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {FooTable.Table#options}
 			 */
 			this.o = table.o;
 			/**
 			 * The current working array of {@link FooTable.Row} objects.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Array.<FooTable.Row>}
 			 * @default []
 			 */
@@ -3348,7 +3348,7 @@
 			 * The {@link FooTable.Rows#current} member is populated with a shallow clone of this array
 			 * during the predraw operation before any core or custom components are executed.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {Array.<FooTable.Row>}
 			 * @default []
 			 */
@@ -3395,7 +3395,7 @@
 		/**
 		 * This parses the rows from either the tables rows or the supplied options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {jQuery.Promise}
 		 */
 		parse: function(){
@@ -3422,7 +3422,7 @@
 		 * Used to finalize the parsing of rows it is supplied the parse deferred object which must be resolved with an array of {@link FooTable.Row} objects
 		 * or rejected with an error.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {jQuery.Deferred} deferred - The deferred object used for parsing.
 		 * @param {(Array.<object>|jQuery)} rows - An array of row values and options or the jQuery object containing all rows.
 		 */
@@ -3435,7 +3435,7 @@
 		/**
 		 * The columns preinit method is used to parse and check the column options supplied from both static content and through the constructor.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the root table element.
 		 * @fires FooTable.Rows#"preinit.ft.rows"
 		 */
@@ -3466,7 +3466,7 @@
 		/**
 		 * Initializes the rows class using the supplied table and options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Rows#"init.ft.rows"
 		 */
 		init: function () {
@@ -3486,7 +3486,7 @@
 		/**
 		 * Destroys the rows component removing any UI generated from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Rows#"destroy.ft.rows"
 		 */
 		destroy: function(){
@@ -3508,7 +3508,7 @@
 		/**
 		 * Performs the predraw operations that are required including creating the shallow clone of the {@link FooTable.Rows#array} to work with.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		predraw: function(){
 			F.arr.each(this.array, function(row){
@@ -3522,7 +3522,7 @@
 		/**
 		 * Performs the actual drawing of the table rows.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		draw: function(){
 			var self = this, $tbody = self.ft.$el.children('tbody'), first = true;
@@ -3858,14 +3858,14 @@
 			/**
 			 * The timeout ID for the filter changed event.
 			 * @instance
-			 * @private
+			 * @public
 			 * @type {?number}
 			 */
 			this._filterTimeout = null;
 			/**
 			 * The regular expression used to check for encapsulating quotations.
 			 * @instance
-			 * @private
+			 * @public
 			 * @type {RegExp}
 			 */
 			this._exactRegExp = /^"(.*?)"$/;
@@ -3875,7 +3875,7 @@
 		/**
 		 * Checks the supplied data and options for the filtering component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.Filtering#"preinit.ft.filtering"
 		 */
@@ -3962,7 +3962,7 @@
 		/**
 		 * Initializes the filtering component for the plugin.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Filtering#"init.ft.filtering"
 		 */
 		init: function () {
@@ -3983,7 +3983,7 @@
 		/**
 		 * Destroys the filtering component removing any UI from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Filtering#"destroy.ft.filtering"
 		 */
 		destroy: function () {
@@ -4003,7 +4003,7 @@
 		/**
 		 * Creates the filtering UI from the current options setting the various jQuery properties of this component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Filtering
 		 */
 		$create: function () {
@@ -4069,7 +4069,7 @@
 		/**
 		 * Performs the filtering of rows before they are appended to the page.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		predraw: function(){
 			if (F.is.emptyArray(this.filters))
@@ -4083,7 +4083,7 @@
 		/**
 		 * As the rows are drawn by the {@link FooTable.Rows#draw} method this simply updates the colspan for the UI.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		draw: function(){
 			if (F.is.jq(this.$cell)){
@@ -4275,7 +4275,7 @@
 		/**
 		 * Handles the change event for the {@link FooTable.Filtering#$input}.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onSearchInputChanged: function (e) {
@@ -4306,7 +4306,7 @@
 		/**
 		 * Handles the click event for the {@link FooTable.Filtering#$button}.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onSearchButtonClicked: function (e) {
@@ -4329,7 +4329,7 @@
 		/**
 		 * Handles the click event for the column checkboxes in the {@link FooTable.Filtering#$dropdown}.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onSearchColumnClicked: function (e) {
@@ -4348,7 +4348,7 @@
 		/**
 		 * Handles the click event for the {@link FooTable.Filtering#$dropdown} toggle.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onDropdownToggleClicked: function (e) {
@@ -4362,7 +4362,7 @@
 		/**
 		 * Checks all click events when the dropdown is visible and closes the menu if the target is not the dropdown.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onDocumentClicked: function(e){
@@ -4396,13 +4396,13 @@
 			/**
 			 * Holds the previous value of the query and is used internally in the {@link FooTable.Query#val} method.
 			 * @type {string}
-			 * @private
+			 * @public
 			 */
 			this._original = null;
 			/**
 			 * Holds the value for the query. Access to this variable is provided through the {@link FooTable.Query#val} method.
 			 * @type {string}
-			 * @private
+			 * @public
 			 */
 			this._value = null;
 			/* PUBLIC */
@@ -4483,7 +4483,7 @@
 		 * @param {string} str - The string to test.
 		 * @param {boolean} def - The default value to return based on the operand.
 		 * @returns {boolean}
-		 * @private
+		 * @public
 		 */
 		_match: function(str, def){
 			var self = this, result = false, empty = F.is.emptyString(str);
@@ -4528,7 +4528,7 @@
 		 * @param {string} str - The string to test.
 		 * @param {boolean} def - The default value to return based on the operand.
 		 * @returns {boolean}
-		 * @private
+		 * @public
 		 */
 		_left: function(str, def){
 			return (this.left instanceof F.Query) ? this.left.match(str) : def;
@@ -4538,14 +4538,14 @@
 		 * @param {string} str - The string to test.
 		 * @param {boolean} def - The default value to return based on the operand.
 		 * @returns {boolean}
-		 * @private
+		 * @public
 		 */
 		_right: function(str, def){
 			return (this.right instanceof F.Query) ? this.right.match(str) : def;
 		},
 		/**
-		 * Parses the private {@link FooTable.Query#_value} property and populates the object.
-		 * @private
+		 * Parses the public {@link FooTable.Query#_value} property and populates the object.
+		 * @public
 		 */
 		_parse: function(){
 			if (F.is.emptyString(this._value)) return;
@@ -4574,7 +4574,7 @@
 		 * Parses a single part of a query into an object to use during matching.
 		 * @param {string} str - The string representation of the part.
 		 * @returns {{query: string, negate: boolean, phrase: boolean, exact: boolean}}
-		 * @private
+		 * @public
 		 */
 		_part: function(str){
 			var p = {
@@ -4774,7 +4774,7 @@
 			/**
 			 * This provides a shortcut to the {@link FooTable.Table#options}.[sorting]{@link FooTable.Defaults#sorting} object.
 			 * @instance
-			 * @protected
+			 * @public
 			 * @type {object}
 			 */
 			this.o = table.o.sorting;
@@ -4802,7 +4802,7 @@
 		/**
 		 * Checks the supplied data and options for the sorting component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.Sorting#"preinit.ft.sorting"
 		 * @this FooTable.Sorting
@@ -4832,7 +4832,7 @@
 		/**
 		 * Initializes the sorting component for the plugin using the supplied table and options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Sorting#"init.ft.sorting"
 		 * @this FooTable.Sorting
 		 */
@@ -4870,7 +4870,7 @@
 		/**
 		 * Destroys the sorting component removing any UI generated from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Sorting#"destroy.ft.sorting"
 		 */
 		destroy: function () {
@@ -4892,7 +4892,7 @@
 		/**
 		 * Performs the actual sorting against the {@link FooTable.Rows#current} array.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		predraw: function () {
 			if (!this.column) return;
@@ -4906,7 +4906,7 @@
 		/**
 		 * Updates the sorting UI setting the state of the sort buttons.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		draw: function () {
 			if (!this.column) return;
@@ -4979,7 +4979,7 @@
 		/**
 		 * Performs the required steps to handle sorting including the raising of the {@link FooTable.Sorting#"before.ft.sorting"} and {@link FooTable.Sorting#"after.ft.sorting"} events.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {(string|number|FooTable.Column)} column - The column name, index or the actual {@link FooTable.Column} object to sort by.
 		 * @param {string} [direction="ASC"] - The direction to sort by, either ASC or DESC.
 		 * @returns {jQuery.Promise}
@@ -5018,7 +5018,7 @@
 		/**
 		 * Handles the sort button clicked event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onSortClicked: function (e) {
@@ -5033,7 +5033,7 @@
 	/**
 	 * Checks the supplied string is a valid direction and if not returns ASC as default.
 	 * @static
-	 * @protected
+	 * @public
 	 * @param {string} str - The string to check.
 	 */
 	F.Sorting.dir = function(str){
@@ -5412,7 +5412,7 @@
 			 * Used to hold the number of page links created.
 			 * @instance
 			 * @type {number}
-			 * @private
+			 * @public
 			 */
 			this._createdLinks = 0;
 		},
@@ -5421,7 +5421,7 @@
 		/**
 		 * Checks the supplied data and options for the paging component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.Paging#"preinit.ft.paging"
 		 */
@@ -5483,7 +5483,7 @@
 		/**
 		 * Initializes the paging component for the plugin using the supplied table and options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Paging#"init.ft.paging"
 		 */
 		init: function(){
@@ -5504,7 +5504,7 @@
 		/**
 		 * Destroys the paging component removing any UI generated from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Paging#"destroy.ft.paging"
 		 */
 		destroy: function () {
@@ -5526,7 +5526,7 @@
 		/**
 		 * Performs the actual paging against the {@link FooTable.Rows#current} array removing all rows that are not on the current visible page.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		predraw: function(){
 			this.total = Math.ceil(this.ft.rows.array.length / this.size);
@@ -5540,7 +5540,7 @@
 		/**
 		 * Updates the paging UI setting the state of the pagination control.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		draw: function(){
 			if (this.total <= 1){
@@ -5578,7 +5578,7 @@
 		/**
 		 * Creates the paging UI from the current options setting the various jQuery properties of this component.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		$create: function(){
 			this._createdLinks = 0;
@@ -5734,7 +5734,7 @@
 		/**
 		 * Performs the required steps to handle paging including the raising of the {@link FooTable.Paging#"before.ft.paging"} and {@link FooTable.Paging#"after.ft.paging"} events.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {number} page - The page to set.
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Paging#"before.ft.paging"
@@ -5772,7 +5772,7 @@
 		 * Creates the pagination links using the current state of the plugin. If the total number of pages is the same as
 		 * the last time this function was executed it does nothing.
 		 * @instance
-		 * @private
+		 * @public
 		 */
 		_createLinks: function(){
 			if (this._createdLinks === this.total) return;
@@ -5811,7 +5811,7 @@
 		/**
 		 * Sets the state for the navigation links of the pagination control and optionally sets the active class state on the current page link.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {boolean} active - Whether or not to set the active class state on the individual page links.
 		 */
 		_setNavigation: function(active){
@@ -5852,7 +5852,7 @@
 		/**
 		 * Sets the visible page using the supplied parameters.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {number} page - The page to make visible.
 		 * @param {boolean} right - If set to true the supplied page will be the right most visible pagination link.
 		 */
@@ -5884,7 +5884,7 @@
 		/**
 		 * Handles the click event for all links in the pagination control.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The event object for the event.
 		 */
 		_onPageClicked: function(e){
@@ -6115,7 +6115,7 @@
 			 * @type {string}
 			 */
 			this.deleteText = table.o.editing.deleteText;
-			
+
 			/**
 			 * The text that appears in the view button. This can contain HTML.
 			 * @type {string}
@@ -6149,7 +6149,7 @@
 			/**
 			 * Caches the row button elements to help with performance.
 			 * @type {(null|jQuery)}
-			 * @private
+			 * @public
 			 */
 			this._$buttons = null;
 
@@ -6172,7 +6172,7 @@
 		/**
 		 * Checks the supplied data and options for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.Editing#"preinit.ft.editing"
 		 */
@@ -6252,7 +6252,7 @@
 		/**
 		 * Initializes the editing component for the plugin using the supplied table and options.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Editing#"init.ft.editing"
 		 */
 		init: function(){
@@ -6273,7 +6273,7 @@
 		/**
 		 * Destroys the editing component removing any UI generated from the table.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @fires FooTable.Editing#"destroy.ft.editing"
 		 */
 		destroy: function () {
@@ -6293,7 +6293,7 @@
 		/**
 		 * Creates the editing UI from the current options setting the various jQuery properties of this component.
 		 * @instance
-		 * @protected
+		 * @public
 		 */
 		$create: function(){
 			var self = this, position = self.position === 'right' ? 'footable-editing-right' : 'footable-editing-left';
@@ -6330,7 +6330,7 @@
 		/**
 		 * Creates the show button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonShow: function(){
@@ -6339,7 +6339,7 @@
 		/**
 		 * Creates the hide button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonHide: function(){
@@ -6348,7 +6348,7 @@
 		/**
 		 * Creates the add button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonAdd: function(){
@@ -6357,7 +6357,7 @@
 		/**
 		 * Creates the edit button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonEdit: function(){
@@ -6366,7 +6366,7 @@
 		/**
 		 * Creates the delete button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonDelete: function(){
@@ -6375,7 +6375,7 @@
 		/**
 		 * Creates the view button for the editing component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$buttonView: function(){
@@ -6384,7 +6384,7 @@
 		/**
 		 * Creates the button group for the row buttons.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @returns {(string|HTMLElement|jQuery)}
 		 */
 		$rowButtons: function(){
@@ -6404,7 +6404,7 @@
 		/**
 		 * Handles the edit button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"edit.ft.editing"
 		 */
@@ -6428,7 +6428,7 @@
 		/**
 		 * Handles the delete button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"delete.ft.editing"
 		 */
@@ -6452,7 +6452,7 @@
 		/**
 		 * Handles the view button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"view.ft.editing"
 		 */
@@ -6476,7 +6476,7 @@
 		/**
 		 * Handles the add button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"add.ft.editing"
 		 */
@@ -6497,7 +6497,7 @@
 		/**
 		 * Handles the show button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"show.ft.editing"
 		 */
@@ -6520,7 +6520,7 @@
 		/**
 		 * Handles the hide button click event.
 		 * @instance
-		 * @private
+		 * @public
 		 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 		 * @fires FooTable.Editing#"show.ft.editing"
 		 */
@@ -6566,7 +6566,7 @@
 		/**
 		 * After the column has been defined this ensures that the $el property is a jQuery object by either creating or updating the current value.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @this FooTable.Column
 		 */
 		$create: function(){
@@ -6577,7 +6577,7 @@
 		 * will be provided to the {@link FooTable.EditingColumn#format} function
 		 * to generate the cell contents.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {(*|jQuery)} valueOrElement - The value or jQuery cell object.
 		 * @returns {(jQuery)}
 		 */
@@ -6810,7 +6810,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.update = function(indexOrRow, data, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];
@@ -6827,7 +6827,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.delete = function(indexOrRow, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];
@@ -6891,7 +6891,7 @@
 		/**
 		 * Checks the supplied data and options for the state component.
 		 * @instance
-		 * @protected
+		 * @public
 		 * @param {object} data - The jQuery data object from the parent table.
 		 * @fires FooTable.State#"preinit.ft.state"
 		 * @this FooTable.State
@@ -6978,7 +6978,7 @@
 		 * This value is a combination of the url hash and either the element ID or an incremented global int value.
 		 * @instance
 		 * @returns {*}
-		 * @private
+		 * @public
 		 */
 		_uid: function(){
 			var id = this.ft.$el.attr('id');
@@ -6994,7 +6994,7 @@
 	/**
 	 * This method is called from the {@link FooTable.State#read} method and allows a component to retrieve its' stored state.
 	 * @instance
-	 * @protected
+	 * @public
 	 * @function
 	 */
 	F.Component.prototype.readState = function(){};
@@ -7002,7 +7002,7 @@
 	/**
 	 * This method is called from the {@link FooTable.State#write} method and allows a component to write its' current state to the store.
 	 * @instance
-	 * @protected
+	 * @public
 	 * @function
 	 */
 	F.Component.prototype.writeState = function(){};
@@ -7010,7 +7010,7 @@
 	/**
 	 * This method is called from the {@link FooTable.State#clear} method and allows a component to clear any stored state.
 	 * @instance
-	 * @protected
+	 * @public
 	 * @function
 	 */
 	F.Component.prototype.clearState = function(){};
